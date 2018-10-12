@@ -21,7 +21,7 @@ allprojects {
         jcenter()
         maven {
             // For Android support library components.
-            url "https://maven.google.com"
+            url "https://maven.google.com"}}
         }
         // You can also use a local Maven repository if desired.
         mavenLocal()
@@ -38,6 +38,11 @@ task extractAudioSo(type: Copy) {
     from zipTree("${project.rootDir}/libraries/sdk-audio-1.170.0.aar")
     into "${project.rootDir}/libraries/"
     include "jni/**/libgvr_audio.so"
+        dependencies {
+        compile 'com.android.support:appcompat-v7:27.0.2'
+        compile 'com.google.android.gms:play-services-ads:11.8.0'
+    }
+
 }
 
 task extractGvrSo(type: Copy) {
